@@ -16,7 +16,7 @@ class Commands:
         data = dict(
             table=obj.__class__.__name__,
             key=key,
-            value=format_value(obj.__dict__[key])[1],
+            value=schema[key][1],
             schema=','.join('{} {}{}'.format(
                     f, v[0], ' PRIMARY KEY' if f == key else ''
                 )
