@@ -30,6 +30,7 @@ class LiteORM:
                 **{k: v for k, v in zip(model.__dict__, row)}
             ) for row in dataset]
         LiteORM.db.commit()
+        return cursor.rowcount
 
     @classmethod
     def find(cls, model: object):
@@ -41,6 +42,7 @@ class LiteORM:
         > find(
             User(
                 name='LIKE "Jo%"',
+                zip_code=None, # -- Will not be included in the query
                 age='> 18',
                 department='IN (1, 2, 3)',
                 status='= 1'
